@@ -1,0 +1,24 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}	
+
+{% block title_block %}
+		<title>About</title>
+{% endblock %}
+
+{% block body_block %}
+	<h1>Rango says</h1>
+
+<p>This page has been put together by Rosa.<br></p></ br>
+Rango says here is the about page.<br />
+
+<p>You've visited the site {{ visit_count }} times</p></ br>
+
+
+		  <a href="/rango/">Index</a><br />
+
+
+
+		<img src="{% static "images/dog.jpg" %}" alt="Picture of a Lovely Dog" />
+		<br>
+		<img src="{{ MEDIA_URL }}cat.jpg" alt="Picture of a Blue-Eyed Cat" />
+{% endblock %}
