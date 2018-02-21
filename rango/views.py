@@ -60,7 +60,7 @@ def about(request):
     #return render(request, 'rango/about.html', context=context_dict)
     return response
 
-def fish_finder(request)
+def fish_finder(request):
 
     fish_list = Fish.objects.order_by('name')
     context_dict = {'fish': fish_list}
@@ -68,7 +68,7 @@ def fish_finder(request)
     response = render (request,'rango/fishfinder.html', context=context_dict)
     return response
 
-def fish_map (request)
+def fish_map(request):
 
     response = render (request,'rango/fishmongermap.html', context=context_dict)
     return response
