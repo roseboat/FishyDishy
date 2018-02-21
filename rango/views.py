@@ -5,6 +5,9 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from rango.models import Category
 from rango.models import Page
+from rango.models import Fish
+from rango.models import Recipe
+from rango.models import Review
 from rango.forms import CategoryForm
 from rango.forms import PageForm
 from rango.forms import UserForm, UserProfileForm
@@ -22,12 +25,13 @@ def index(request):
     # Place the list in our context_dict dictionary
     # that will be passed to the template engine.
 
-
     request.session.set_test_cookie()
     # this queries Category model to retrieve top five cate
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
-    context_dict = {'categories': category_list, 'pages': page_list}
+    recipe_list = Recipe.objects.order_by('-avgRating')[:5]
+    
+    context_dict = {'categories': category_list, 'pages': page_list, 'recipes': recipe_list}
 
     visitor_cookie_handler(request)
     context_dict['visits'] = request.session['visits']
@@ -54,6 +58,19 @@ def about(request):
     response = render (request,'rango/about.html', context=context_dict)
     # return HttpResponse("Rango says here is the about page!<br/> <a href='/rango/'>Index</a>")
     #return render(request, 'rango/about.html', context=context_dict)
+    return response
+
+def fish_finder(request)
+
+    fish_list = Fish.objects.order_by('name')
+    context_dict = {'fish': fish_list}
+    
+    response = render (request,'rango/fishfinder.html', context=context_dict)
+    return response
+
+def fish_map (request)
+
+    response = render (request,'rango/fishmongermap.html', context=context_dict)
     return response
 
 def show_category(request, category_name_slug):
