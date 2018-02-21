@@ -65,12 +65,12 @@ def fish_finder(request):
     fish_list = Fish.objects.order_by('name')
     context_dict = {'fish': fish_list}
     
-    response = render (request,'rango/fishfinder.html', context=context_dict)
+    response = render (request,'rango/fish_finder.html', context=context_dict)
     return response
 
 def fish_map(request):
 
-    response = render (request,'rango/fishmongermap.html', context=context_dict)
+    response = render (request,'rango/fish_map.html')
     return response
 
 def show_category(request, category_name_slug):
