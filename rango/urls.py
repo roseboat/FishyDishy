@@ -26,6 +26,10 @@ urlpatterns = [
         views.restricted,
         name='restricted'),
 
+    url(r'^fishmongermap/',
+        views.fish_map,
+        name='fish_map'),
+
     #url(r'^logout/$',
         #views.user_logout,
         #name='logout'),
