@@ -15,19 +15,21 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+# variable for path of static image
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
+# variable for path of media
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y(8co-=8js4%a7(0nrl1&dk-8g-7xh94nuzs4!+_kip=&e&o$h'
+SECRET_KEY = 'l2(xvyc15hd8e6&m_w(lhdf3z9w+c^*i8c!793a_rac9)ik+0a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'tango_with_django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR,],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,7 +95,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        'OPTIONS': { 'min_length':6, }
+        'OPTIONS': { 'min_length': 6, }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -102,17 +104,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-PASSWORD_HASHERS = [
+PASSWORD_HASHERS = (
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-    ]
+)
 
-# Where you'd like to redirect users that aren't logged in
 LOGIN_URL = '/rango/login/'
-
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -126,15 +123,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Media Files
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
-STATICFILES_DIRS = [STATIC_DIR,]
+STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
-
-

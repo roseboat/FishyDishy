@@ -1,23 +1,25 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
-class Category(models.Model):
+# Create your models here.
+class Category (models.Model):
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=True)
 
-    def save (self, *args, **kwargs):
+    def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
-        super (Category, self).save(*args, **kwargs)
-    
+        super(Category, self).save(*args, **kwargs)
+
     class Meta:
-        verbose_name_plural = 'categories'
+        verbose_name_plural = 'Categories'
 
-    def __str__(self):
+    def __str__(self):  # For Python 2, use __unicode__ too
         return self.name
-
 
 class Page(models.Model):
     category = models.ForeignKey(Category)
@@ -25,22 +27,18 @@ class Page(models.Model):
     url = models.URLField()
     views = models.IntegerField(default=0)
 
-    class Meta:
-        verbose_name_plural = 'pages'
-
-    def __str__(self):
+    def __str__(self): # For Python 2, use __unicode__ too
         return self.title
 
 class UserProfile(models.Model):
-    # This line is required. Links UserProfile to a User Model Instance.
+    # This line is requred- links UserProfile to a User model instance
     user = models.OneToOneField(User)
 
-    # The additional attributes we wish to include
+    # The additional attributes asked to be included
+    # if using python 2.7 define __unicode__ too
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
-    #Override the __unicode__() method to reutnr out something meaningful!
-
+    # Override the __unicode__() method to return out something meaningful
     def __str__(self):
         return self.user.username
-
