@@ -40,25 +40,17 @@
 
 }
 
-
-
 .navbar {
   
 	background-color: #87c9d9;	
 	font-family: 'Josefin Sans';
 	width: 100%;
-
 	bottom: 0;
-
 	padding: 15px;
-
 	font-size: 15px;
-
 	color: #000000;
-
 	font-weight: 600;
 	text-transform: uppercase;
-
 	border-radius: 0;
 
 	}
@@ -67,16 +59,11 @@
 footer {
 	
 	width: 100%;
-
 	font-weight: 600;
 	background-color: #2e9fb5;
-
 	bottom: 0;
-
 	text-transform: uppercase;
-
 	padding: 15px;
-
 	font-size: 25px;
 	color: #000;
 }
@@ -150,12 +137,12 @@ height: auto;
 	<nav class="navbar">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/toptrumps/" style="font-size: 28px">Fishy Dishy</a>
+				<a class="navbar-brand" href="{% url 'index' %}" style="font-size: 28px">Fishy Dishy</a>
 			</div>
 			<ul class="nav navbar-nav text-center">
-				<li><a href="" style="font-size: 25px;">FishMonger</a></li>
-				<li><a href="/toptrumps/game/" style="font-size: 25px;">FishFinder</a></li>
-				<li><a href="/toptrumps/stats/" style="font-size: 25px;">Recipes</a></li>
+				<li><a href="{% url 'fish_map' %}" style="font-size: 25px;">FishMonger</a></li>
+				<li><a href="{% url 'fish_finder' %}" style="font-size: 25px;">FishFinder</a></li>
+				<li><a href="" style="font-size: 25px;">Recipes</a></li>
 			</ul>
  	
 	<form class="form-inline pull-right">
@@ -166,6 +153,7 @@ height: auto;
 		
 	</nav>
 	<div class="header">
+	<br><br>
 	<center><img src="{% static "images/fishydishyheader.jpg" %}" alt="Fishy Dishy Header" /></center>
 	</div>
 	<div class="row">
@@ -209,10 +197,10 @@ height: auto;
 <a href="{% url 'about' %}">About</a>
 </div>
 <div class="col-md-4">
-	<a href="/toptrumps/" style="font-size: 25px;">Contact</a>
+	<a href="" style="font-size: 25px;">Contact</a>
 </div>
 <div class="col-md-4">
-	<a href="/toptrumps/game/" style="font-size: 25px;">SiteMap</a>
+	<a href="" style="font-size: 25px;">SiteMap</a>
 </div>
 	</footer>
 
