@@ -1,0 +1,122 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	Rango
+{% endblock %}
+
+{% block body_block %}
+
+<body onload="getLocation()">
+	<h1>Find your Local Fishmongers</h1>
+
+	<div>
+
+			hey there partner!
+
+	</div>
+
+
+	<p>visits: 1</p>
+	        <p>Latitude:
+            <input type="text" id="latitude" readonly />
+        </p>
+        <p>Longitude:
+            <input type="text" id="longitude" readonly />
+
+	<input id="address" type="text" placeholder="Enter address here" />
+    <button id="btn">Go Fish</button>
+
+
+    <div id="map" style="width:50%;height:400px;"></div>
+
+	 <script>
+
+	function showResult(result) {
+    document.getElementById('latitude').value = result.geometry.location.lat();
+    document.getElementById('longitude').value = result.geometry.location.lng();
+}
+
+function getLatitudeLongitude(callback, address) {
+    // If adress is not supplied, use default value 'Ferrol, Galicia, Spain'
+    address = address || 'Ferrol, Galicia, Spain';
+    // Initialize the Geocoder
+    geocoder = new google.maps.Geocoder();
+    if (geocoder) {
+        geocoder.geocode({
+            'address': address
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                callback(results[0]);
+            }
+        });
+    }
+}
+
+var button = document.getElementById('btn');
+
+button.addEventListener("click", function () {
+    var address = document.getElementById('address').value;
+    getLatitudeLongitude(showResult, address)
+});
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(initMap);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var map;
+      var infowindow;
+
+      function initMap(position) {
+          var latitude=position.coords.latitude;
+          var longitude= position.coords.longitude;
+
+        var pyrmont = {lat:latitude , lng: longitude};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 10
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: pyrmont,
+          radius: 10000,
+          keyword: "fishmonger",
+        }, callback);
+      }
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+    </script>
+
+
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBY6Cy7iHH4lxQN6f-JdyuM5qC1UFyT5Os&libraries=places&callback=initMap"></script>
