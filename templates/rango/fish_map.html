@@ -10,26 +10,18 @@
 <body onload="getLocation()">
 	<h1>Find your Local Fishmongers</h1>
 
-	<div>
-
-			hey there partner!
-
-	</div>
-
-
-	<p>visits: 1</p>
 	        <p>Latitude:
             <input type="text" id="latitude" readonly />
         </p>
         <p>Longitude:
             <input type="text" id="longitude" readonly />
-
+	<p>
 	<input id="address" type="text" placeholder="Enter address here" />
     <button id="btn">Go Fish</button>
-
+	</p>
 
     <div id="map" style="width:50%;height:400px;"></div>
-{% endblock %}
+
 	 <script>
 
 	function showResult(result) {
@@ -120,3 +112,6 @@ function getLocation() {
 
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBY6Cy7iHH4lxQN6f-JdyuM5qC1UFyT5Os&libraries=places&callback=initMap"></script>
+
+
+	{% endblock %}
