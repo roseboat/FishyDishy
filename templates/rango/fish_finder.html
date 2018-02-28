@@ -12,15 +12,16 @@
 
 	<div>
 		
-		{% if fish %}
-		<ul>
-			{% for fish in fishList %}
-				<li>{{ fish.name }}</li>
+		
+			{% for Fish in fishList %}
+				<li>{{ Fish.name }}
+				<ul>
+					<li>Sustainability rating: {{ Fish.sustainability }}</li>
+					<li><img src="{% static "/images/{{ Fish.name }}.jpg" %}" alt="Picture of {{ Fish.name }}" /></li>
+				</ul>
+				</li>
 			{% endfor %}
-		</ul>
-		{% else %}
-			<strong>There are no fish present.</strong>
-		{% endif %} 
+		
 	
 	</div>
 

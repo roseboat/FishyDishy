@@ -64,7 +64,7 @@ def about(request):
 
 def fish_finder(request):
 
-    fish_list = Fish.objects.order_by('name')
+    fish_list = Fish.objects.order_by('name')[:5]
     context_dict = {'fishList': fish_list}
     
     response = render (request,'rango/fish_finder.html', context=context_dict)
