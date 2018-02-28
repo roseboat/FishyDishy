@@ -1,27 +1,39 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-<html>
 
-    <head>
-        <title>Cat Worshippers</title>
-    </head>
+{% block title_block %}
+    About
+{% endblock %}
 
-    <body>
-        <h1> About </h1>
-        <div>
-            This is Snowball <br />
-            <strong>{{boldmessage}}</strong><br />
-        </div
-        <div>
-            <a href="/rango/">Index</a><br />
-            <img src="{{ MEDIA_URL }}cat.jpg" width="600" height="800" />
-        </div>
-	<div>
-		<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
-	</div>
-        <div>
-          this tutorial has been put together by Chad Gill <br />
-        </div> 
-    </body>
+{% block body_block %}
 
-    </html>
+    <h1>All About Fish</h1>
+    <div class="content">
+        <p>
+            Fish are among the healthiest foods on the planet, with health professionals and medical bodies
+            recommending we eat them at least twice a week to avail of their powerful vitamins and nutrients.
+        </p>
+        <p>
+            But while our local markets are abound with those nutritious and delicious fruits of the sea,
+            most of us can’t tell our tunas from our trouts or our cod from our coley.
+            And in a world where more and more people are eating cleaner and living greener,
+            many other questions come to mind, ‘Which fish are sustainable?’, ‘Which are local to me?’ and even
+            ‘How best to cook them?!’.
+        </p>
+        <p>
+            That’s where Fishy Dishy comes in.  Your one-stop hub for everything fish, Fishy Dishy allows users to
+            browse the world’s fish by type and sustainability, read about where they’re from, their taste, texture and
+            nutrition and check out our ‘Catch of the Day’ for the season’s most lauded fish.
+        </p>
+        <p>
+            Still struggling with getting a fish on your dish? Get acquainted with your local fishmongers with our handy map,
+            and browse our user-uploaded recipes for some mouth-watering inspiration!
+        </p>
+        <p>
+            Got a great recipe you’d like to share? Upload it and let others try them, rate them and comment on
+            them - the most popular recipes will be featured on our homepage every month. Fish tacos anyone?
+        </p>
+
+    </div>
+
+{% endblock %}

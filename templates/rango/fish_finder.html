@@ -8,78 +8,28 @@
 {% block body_block %}
 
 <body onload="getLocation()">
-	<h1>Find your Local Fishmongers</h1>
+	<h1>Find your Favourite Fish</h1>
 
 	<div>
 		
-			hey there partner!
 		
+			{% for Fish in fishList %}
+				<li>{{ Fish.name }}
+				<ul>
+					<li>Sustainability rating: {{ Fish.sustainability }}</li>
+					<li><img src="{% static "/images/{{ Fish.name }}.jpg" %}" alt="Picture of {{ Fish.name }}" /></li>
+				</ul>
+				</li>
+			{% endfor %}
+		
+	
 	</div>
 
+	
 
 
-	<h2>Most Liked Categories</h2>
-	  <div>
-		
-		<ul>
-			
 
-			<li>
-				<a href="/rango/category/python/">Python</a>
-			</li>
-			
-
-			<li>
-				<a href="/rango/category/django/">Django</a>
-			</li>
-			
-
-			<li>
-				<a href="/rango/category/other-frameworks/">Other Frameworks</a>
-			</li>
-			
-
-			<li>
-				<a href="/rango/category/pascal/">Pascal</a>
-			</li>
-			
-		</ul>
-		
-	</div>
-
-	<h2>Most Viewed Pages</h2>
-	<div>
-		
-		<ul>
-			
-
-			<li>
-				<a href="http://docs.python.org/2/tutorial/">Official Python Tutorial</a>
-			</li>
-			
-
-			<li>
-				<a href="http://www.greenteapress.com/thinkpython/">How to Think like a Computer Scientist</a>
-			</li>
-			
-
-			<li>
-				<a href="http://www.korokithakis.net/tutorials/python/">Learn Python in 10 Minutes</a>
-			</li>
-			
-
-			<li>
-				<a href="https://docs.djangoproject.com/en/1.9/intro/tutorial01/">Official Django Tutorial</a>
-			</li>
-			
-
-			<li>
-				<a href="http://www.djangorocks.com/">Django Rocks</a>
-			</li>
-			
-		</ul>
-		
-	</div>
+	
 
 	<p>visits: 1</p>
 	

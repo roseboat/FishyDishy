@@ -5,7 +5,9 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from rango.models import Category
 from rango.models import Page
+
 from rango.models import Fish
+
 from rango.models import Recipe
 from rango.models import Review
 from rango.forms import CategoryForm
@@ -62,10 +64,12 @@ def about(request):
 
 def fish_finder(request):
 
-    fish_list = Fish.objects.order_by('name')
-    context_dict = {'fish': fish_list}
+    fish_list = Fish.objects.order_by('name')[:5]
+    context_dict = {'fishList': fish_list}
     
     response = render (request,'rango/fish_finder.html', context=context_dict)
+    
+    
     return response
 
 def fish_map(request):
@@ -147,7 +151,7 @@ def add_page(request, category_name_slug):
     context_dict = {'form':form, 'category': category}
     return render(request, 'rango/add_page.html', context_dict,)
 
-
+@login_required
 def add_recipe(request):
     form = RecipeForm()
 
