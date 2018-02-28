@@ -145,6 +145,7 @@ height: auto;
 				<li><a href="{% url 'fish_map' %}" style="font-size: 25px;">FishMonger</a></li>
 				<li><a href="{% url 'fish_finder' %}" style="font-size: 25px;">FishFinder</a></li>
 				<li><a href="" style="font-size: 25px;">Recipes</a></li>
+				<li><a href="{% url 'add_recipe' %}" style="font-size: 25px;">Add a Recipe</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'restricted' %}" style="font-size: 25px;">Restricted Page</a></li>
                 <li> <a href="{% url 'auth_logout' %}?next=/rango/" style="font-size: 25px;">Logout</a></li>

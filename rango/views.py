@@ -10,7 +10,7 @@ from rango.models import Recipe
 from rango.models import Review
 from rango.forms import CategoryForm
 from rango.forms import PageForm
-from rango.forms import UserForm, UserProfileForm
+from rango.forms import UserForm, UserProfileForm, RecipeForm
 from  django.contrib.auth import authenticate, login
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
@@ -146,6 +146,31 @@ def add_page(request, category_name_slug):
 
     context_dict = {'form':form, 'category': category}
     return render(request, 'rango/add_page.html', context_dict,)
+
+
+def add_recipe(request):
+    form = RecipeForm()
+
+    # HTTP POST
+    if request.method == 'POST':
+        form = RecipeForm(request.POST)
+
+        # provided valid form?
+        if form.is_valid():
+            # save new cate to DB
+            form.save(commit=True)
+            # could give a confirmation message
+            # but recent category is added on index page
+            # and direct user back to index page
+            return index(request)
+        else:
+            print(form.errors)
+
+    return render(request, 'rango/add_recipe.html', {'form': form})
+
+
+
+
 
 """def register(request):
     # A boolean value for telling the template whether the registration

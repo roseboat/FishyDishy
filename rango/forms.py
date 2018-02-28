@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from rango.models import Page, Category, UserProfile
+from rango.models import Page, Category, UserProfile, Recipe
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128,
@@ -58,3 +58,15 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('website', 'picture')
+
+class RecipeForm(forms.ModelForm):
+    title = forms.CharField(max_length=300, help_text="Give your recipe a title:")
+    description = forms.CharField(max_length=2000, help_text="Introduce your recipe to the world!")
+    ingredients = forms.CharField(max_length=125, help_text="Enter an ingredient")
+    method = forms.CharField(max_length=300, help_text="Enter your method")
+    fish = forms.CharField(max_length=125, help_text="What fish is in it?")
+    serves = forms.CharField(max_length=125, help_text="How many servings?")
+
+    class Meta:
+        model = Recipe
+        fields = ('title', 'description', 'ingredients', 'method', 'fish', 'serves')

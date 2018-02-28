@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^add_category/$', views.add_category, name='add_category'),
     url(r'^fishmongermap/$', views.fish_map, name='fish_map'),
     url(r'^fishfinder/$', views.fish_finder, name='fish_finder'),
+    url(r'^add_recipe/$', views.add_recipe, name='add_recipe'),
 
     url(r'^category/(?P<category_name_slug>[\w\-]+)/$',
         views.show_category,
